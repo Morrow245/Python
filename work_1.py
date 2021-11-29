@@ -1,0 +1,8 @@
+my_list = (1, 10, 'red', 'winter', 5, 'road' )
+print(type(my_list))
+print(type(1))
+print(type(10))
+print(type('red'))
+print(type('winter'))
+print(type(5))
+print(type('road'))
