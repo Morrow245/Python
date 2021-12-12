@@ -1,3 +1,11 @@
-list_1 = [2, 2, 2, 7, 23, 1, 44, 44, 3, 2, 10, 7, 4, 11]
-list_2 = [el for el in list_1 if list_1.count(el) == 1]
-print(list_2)
+dict = {'One' : 'Один', 'Two' : 'Два', 'Three' : 'Три', 'Four' : 'Четыре'}
+new_file = []
+with open("f4.txt", "r", encoding='utf-8') as f:
+    for i in f:
+        i = i.split(' ', 1)
+        new_file.append(dict[i[0]] + '  ' + i[1])
+with open('f4_new.txt', 'r+', encoding='utf-8') as f2:
+    f2.writelines(new_file)
+    f2.seek(0)
+    cont2 = f2.read()
+    print(cont2)

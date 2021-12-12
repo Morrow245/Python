@@ -1,6 +1,11 @@
-list_1 = [300, 2, 12, 44, 1, 1, 4, 10, 7, 1, 78, 123, 55]
-list_2 = []
-for el in range(len(list_1)-1):
-    if list_1[el] < list_1[el+1]:
-        list_2.append(list_1[el+1])
-print(list_2)
+with open('f2.txt', 'r') as f:
+    cont = f.read()
+    print(f'Содержимое файла: \n{cont}')
+    f.seek(0)
+    lines = f.readlines()
+    print(f'Колличество строк: {len(lines)}')
+    f.seek(0)
+    for i in range(len(lines)):
+        line = f.readline()
+        words = line.split()
+        print(f'Колличество слов в {i + 1} строке: {len(words)}')
