@@ -1,10 +1,20 @@
-with open('f_py.txt', 'w+') as my_f:
-    text= input('Введите текст:')
-    while text:
-        my_f.writelines(f'{text}\n')
-        text = input('Введите тест: ')
-        if not text:
-            break
-    my_f.seek(0)
-    content = my_f.read()
-    print(content)
+import time
+class TrafficLight:
+    __color: str = ['Red', 'Yellow', 'Green']
+
+    def running(self):
+        if TrafficLight.__color[0] == 'Red' and TrafficLight.__color[1] == 'Yellow' and TrafficLight.__color[2] == 'Green':
+            i = 0
+            while i < 3:
+                print(TrafficLight.__color[i])
+                if i == 0:
+                    time.sleep(7)
+                elif i == 1:
+                    time.sleep(2)
+                elif i == 2:
+                    time.sleep(5)
+                i += 1
+        else:
+            print("Порядок переключения режимов светофора нарушен!")
+trafficlight = TrafficLight()
+trafficlight.running()
