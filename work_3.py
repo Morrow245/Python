@@ -1,11 +1,17 @@
-with open('f3.txt', 'rt', encoding = 'utf-8') as f:
-    cont = f.readlines()
-    f.seek(0)
-    sal = []
-    for i in range(len(cont)):
-        line = f.readline()
-        words = line.split()
-        if float(words[1]) < 20000:
-            print(words[0])
-        sal.append(words[1])
-    print(f'Средний доход сотудников: {sum(map(float, sal)) / len(sal)}')
+class Worker:
+    def __init__(self, name, surname, position, wage, bonus):
+        self.name = name
+        self.surname = surname
+        self.position = position
+        self._income = {"wage": wage, "bonus": bonus}
+class Position(Worker):
+    def __init__(self, name, surname, position, wage, bonus):
+        super().__init__(name, surname, position, wage, bonus)
+    def get_full_name(self):
+        return self.name + ' ' + self.surname
+    def get_total_income(self):
+        return self._income.get('wage') + self._income.get('bonus')
+a = Position('Vika', 'Batyshkina', 'Cashier', 20000, 21000)
+print(a.get_full_name())
+print(a.position)
+print(a.get_total_income())

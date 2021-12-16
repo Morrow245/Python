@@ -1,11 +1,35 @@
-with open('f2.txt', 'r') as f:
-    cont = f.read()
-    print(f'Содержимое файла: \n{cont}')
-    f.seek(0)
-    lines = f.readlines()
-    print(f'Колличество строк: {len(lines)}')
-    f.seek(0)
-    for i in range(len(lines)):
-        line = f.readline()
-        words = line.split()
-        print(f'Колличество слов в {i + 1} строке: {len(words)}')
+class Road():
+    _length: int
+    _width: int
+
+    def __init__(self, _length, _width, mass, thickness):  # конструктор для приема переменных экземпляров
+        self._length = _length
+        self._width = _width
+        self.thickness = thickness
+        self.mass = mass
+
+    def massa(self):
+        return (self._length * self._width * self.mass * (self.thickness / 100)) * 0.1
+
+
+m = Road(20, 5000, 25, 5)  # экземпляр
+print(f'Масса асфальта: {m.massa()} тонн')
+
+
+# если при создании экземпляра передаются только длина и ширина
+class Road():
+    _length: int
+    _width: int
+
+    def __init__(self, _length, _width):  # конструктор для приема переменных экземпляров
+        self._length = _length
+        self._width = _width
+
+    def massa(self):
+        mass = 25
+        thickness = 5
+        return (self._length * self._width * mass * (thickness / 100)) * 0.1
+
+
+m = Road(20, 5000)  # экземпляр
+print(f'Масса асфальта: {m.massa()} тонн')
