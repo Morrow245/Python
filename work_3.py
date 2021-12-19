@@ -1,11 +1,36 @@
-with open('f3.txt', 'rt', encoding = 'utf-8') as f:
-    cont = f.readlines()
-    f.seek(0)
-    sal = []
-    for i in range(len(cont)):
-        line = f.readline()
-        words = line.split()
-        if float(words[1]) < 20000:
-            print(words[0])
-        sal.append(words[1])
-    print(f'Средний доход сотудников: {sum(map(float, sal)) / len(sal)}')
+class Cell:
+    def __init__(self, quantity):
+        self.quantity = int(quantity)
+
+    def __str__(self):
+        return f'Результат операции {self.quantity * "5"}'
+    def __add__(self, other):
+        return Cell(self.quantity + other.quantity)
+
+    def __sub__(self, other):
+        return self.quantity - other.quantity if (self.quantity - other.quantity) > 0 else print('Отрицательно!')
+
+    def __mul__(self, other):
+        #self.result = Cell(int(self.quantity * other.quantity))
+        return Cell(int(self.quantity * other.quantity))
+
+    def __truediv__(self, other):
+        #self.result = Cell(round(self.quantity // other.quantity))
+        return Cell(round(self.quantity // other.quantity))
+
+
+    def make_order(self, cells_in_row):
+        row = ''
+        for i in range(int(self.quantity / cells_in_row)):
+            row += f'{"5" * cells_in_row} \\n'
+        row += f'{"5" * (self.quantity % cells_in_row)}'
+        return row
+
+cells1 = Cell(33)
+cells2 = Cell(9)
+print(cells1)
+print(cells1 + cells2)
+print(cells2 - cells1)
+print(cells2.make_order(5))
+print(cells1.make_order(10))
+print(cells1 / cells2)
