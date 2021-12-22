@@ -1,11 +1,25 @@
-with open('f3.txt', 'rt', encoding = 'utf-8') as f:
-    cont = f.readlines()
-    f.seek(0)
-    sal = []
-    for i in range(len(cont)):
-        line = f.readline()
-        words = line.split()
-        if float(words[1]) < 20000:
-            print(words[0])
-        sal.append(words[1])
-    print(f'Средний доход сотудников: {sum(map(float, sal)) / len(sal)}')
+class Error:
+    def __init__(self, *args):
+        self.my_list = []
+
+    def my_input(self):
+
+        while True:
+            try:
+                val = int(input('Введите значения и нажимайте Enter - '))
+                self.my_list.append(val)
+                print(f'Текущий список - {self.my_list} \n ')
+            except:
+                print(f"Недопустимое значение - строка и булево")
+                y_or_n = input(f'Попробовать еще раз? Y/N ')
+
+                if y_or_n == 'Y' or y_or_n == 'y':
+                    print(try_except.my_input())
+                elif y_or_n == 'N' or y_or_n == 'n':
+                    return f'Вы вышли'
+                else:
+                    return f'Вы вышли'
+
+
+try_except = Error(1)
+print(try_except.my_input())
